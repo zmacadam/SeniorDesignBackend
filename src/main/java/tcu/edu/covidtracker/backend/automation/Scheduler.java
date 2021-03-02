@@ -18,36 +18,22 @@ public class Scheduler {
 //    @Autowired
 //    private CurlExecutor curlExecutor;
 
-    @Test
-    public void dailyCountyTest() throws IOException {
-//        Enabled for testing
-        CurlExecutor curlExecutor = new CurlExecutor();
-        String url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv";
-        curlExecutor.executeCurl(url, "download/county/");
-    }
 
     @Test
     public void cumulativeCountyTest() throws IOException {
 //        Enabled for testing
         CurlExecutor curlExecutor = new CurlExecutor();
         String url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv";
-        curlExecutor.executeCurl(url, "");
+        curlExecutor.executeCurl(url, "nytimes-county");
     }
 
-    @Test
-    public void dailyStateTest() throws IOException {
-        //        Enabled for testing
-        CurlExecutor curlExecutor = new CurlExecutor();
-        String url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv";
-        curlExecutor.executeCurl(url, "download/state/");
-    }
 
     @Test
     public void cumulativeStateTest() throws IOException {
         //        Enabled for testing
         CurlExecutor curlExecutor = new CurlExecutor();
         String url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv";
-        curlExecutor.executeCurl(url, "");
+        curlExecutor.executeCurl(url, "nytimes-state");
     }
 
     @Test
@@ -56,6 +42,20 @@ public class Scheduler {
         CurlExecutor curlExecutor = new CurlExecutor();
         String url = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv";
         curlExecutor.executeCurl(url, "vaccine/");
+    }
+
+    @Test
+    public void covidTrackingUS() throws IOException {
+        CurlExecutor curlExecutor = new CurlExecutor();
+        String url = "https://covidtracking.com/data/download/national-history.csv";
+        curlExecutor.executeCurl(url, "covidtracking-us");
+    }
+
+    @Test
+    public void covidTrackingState() throws IOException {
+        CurlExecutor curlExecutor = new CurlExecutor();
+        String url = "https://covidtracking.com/data/download/all-states-history.csv";
+        curlExecutor.executeCurl(url, "covidtracking-state");
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class CurlExecutor {
 
-    public void executeCurl(String url, String entity) throws IOException {
+    public void executeCurl(String url, String fileName) throws IOException {
         String command = "curl " + url;
         ProcessBuilder processBuilder = new ProcessBuilder(command.split(" " ));
         Process process = processBuilder.start();
@@ -27,10 +27,10 @@ public class CurlExecutor {
 
         String text = byteSource.asCharSource(Charsets.UTF_8).read();
 
-        Date today = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String fileName = dateFormat.format(today);
-        File county = new File("src/main/resources/csv/" + entity + fileName + ".csv");
+//        Date today = Calendar.getInstance().getTime();
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String fileName = dateFormat.format(today);
+        File county = new File("src/main/resources/csv/master/" + fileName + ".csv");
         BufferedWriter writer = new BufferedWriter(new FileWriter(county));
 
         writer.write(text);

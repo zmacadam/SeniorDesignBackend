@@ -28,8 +28,8 @@ public class MongoParser {
 
     @PostConstruct
     public void dailyState() throws IOException, CsvValidationException {
-        String stateDir = "C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\state";
-        String countyDir = "C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\county";
+        String stateDir = "C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\nytimes\\state";
+        String countyDir = "C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\nytimes\\county";
         int size = new File(stateDir).list().length;
         for (int i = 0; i < size-1; i++) {
             LocalDate today = LocalDate.now().minusDays(1 + i);
