@@ -17,7 +17,7 @@ public class CSVParser {
     public void parseState() {
         try {
             LinkedHashMap<String, String> baseline = stateBaseLine();
-            Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\master\\nytimes-state.csv"));
+            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/nytimes-state.csv"));
             CSVReader csvReader = new CSVReader(reader);
             LinkedHashMap<String, ArrayList> dates = new LinkedHashMap<>();
             String[] nextRecord;
@@ -37,7 +37,7 @@ public class CSVParser {
     public void parseCounty() {
         try {
             LinkedHashMap<String, String> baseline = countyBaseLine();
-            Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\master\\nytimes-county.csv"));
+            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/nytimes-county.csv"));
             CSVReader csvReader = new CSVReader(reader);
             LinkedHashMap<String, ArrayList> dates = new LinkedHashMap<>();
             String[] nextRecord;
@@ -54,7 +54,7 @@ public class CSVParser {
     }
 
     private LinkedHashMap<String, String> countyBaseLine() throws IOException, CsvValidationException {
-        Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\master\\counties.csv"));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/counties.csv"));
         CSVReader csvReader = new CSVReader(reader);
         LinkedHashMap<String, String> keys = new LinkedHashMap<>();
         String[] nextRecord;
@@ -73,7 +73,7 @@ public class CSVParser {
     }
 
     private LinkedHashMap<String, String> stateBaseLine() throws IOException, CsvValidationException {
-        Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\master\\states.csv"));
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/states.csv"));
         CSVReader csvReader = new CSVReader(reader);
         LinkedHashMap<String, String> keys = new LinkedHashMap<>();
         String[] nextRecord;
@@ -106,7 +106,7 @@ public class CSVParser {
         try {
             for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
                 String key = entry.getKey();
-                File csv = new File("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\nytimes\\county\\" + key + ".csv");
+                File csv = new File("src/main/resources/csv/download/nytimes/county/" + key + ".csv");
                 FileWriter fw = new FileWriter(csv);
                 BufferedWriter bw = new BufferedWriter(fw);
                 bw.write("county,state,fips,cases,deaths\n");
@@ -136,7 +136,7 @@ public class CSVParser {
         try {
             for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
                 String key = entry.getKey();
-                File csv = new File("C:\\Users\\Zach\\eclipse-workspace\\backend\\src\\main\\resources\\csv\\download\\nytimes\\state\\" + key + ".csv");
+                File csv = new File("src/main/resources/csv/download/nytimes/state/" + key + ".csv");
                 FileWriter fw = new FileWriter(csv);
                 BufferedWriter bw = new BufferedWriter(fw);
                 bw.write("state,fips,cases,deaths\n");
