@@ -14,9 +14,9 @@ import java.util.Map;
 public class CSVParser {
 
     @Test
-    public void parseState() {
+    public void nytimesState() {
         try {
-            LinkedHashMap<String, String> baseline = stateBaseLine();
+            LinkedHashMap<String, String> baseline = stateBaseLine("nytimes");
             Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/nytimes-state.csv"));
             CSVReader csvReader = new CSVReader(reader);
             LinkedHashMap<String, ArrayList> dates = new LinkedHashMap<>();
@@ -27,14 +27,14 @@ public class CSVParser {
                 String data = nextRecord[1] + "," + nextRecord[2] + "," + nextRecord[3] + "," + nextRecord[4];
                 createMap(dates, date, data);
             }
-            stateCumulative(dates, baseline);
+            nytimesStateCumulative(dates, baseline);
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void parseCounty() {
+    public void nytimesCounty() {
         try {
             LinkedHashMap<String, String> baseline = countyBaseLine();
             Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/nytimes-county.csv"));
@@ -47,7 +47,43 @@ public class CSVParser {
                 String data = nextRecord[1] + "," + nextRecord[2] + "," + nextRecord[3] + "," + nextRecord[4] + "," + nextRecord[5];
                 createMap(dates, date, data);
             }
-            countyCumulative(dates, baseline);
+            nytimesCountyCumulative(dates, baseline);
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void covidtrackingState() {
+        try {
+            LinkedHashMap<String, String> baseline = stateBaseLine("covidtracking");
+            LinkedHashMap<String, String> stateKeys = stateAbbreviations();
+            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/covidtracking-state.csv"));
+            CSVReader csvReader = new CSVReader(reader);
+            LinkedHashMap<String, ArrayList> dates = new LinkedHashMap<>();
+            String[] nextRecord;
+            csvReader.readNext();
+            while ((nextRecord = csvReader.readNext()) != null) {
+                String date = nextRecord[0];
+                String vals = stateKeys.get(nextRecord[1]);
+                String[] valsArray;
+                String state;
+                String fips;
+                if (vals != null) {
+                    valsArray = vals.split(",");
+                    state = valsArray[0];
+                    fips = valsArray[1];
+                } else {
+                    continue;
+                }
+                String hospitalized = !nextRecord[6].equals("") ? nextRecord[6] : "0";
+                String hospitalizedCum = !nextRecord[7].equals("") ? nextRecord[7] : "0";
+                String hospitalizedCur = !nextRecord[8].equals("") ? nextRecord[8] : "0";
+                String hospitalizedInc = !nextRecord[9].equals("") ? nextRecord[9] : "0";
+                String data = state + "," + fips + "," + hospitalized + "," + hospitalizedCum + "," + hospitalizedCur + "," + hospitalizedInc;
+                createMap(dates, date, data);
+            }
+            covidtrackingCumulative(dates, baseline);
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
         }
@@ -72,7 +108,7 @@ public class CSVParser {
         return keys;
     }
 
-    private LinkedHashMap<String, String> stateBaseLine() throws IOException, CsvValidationException {
+    private LinkedHashMap<String, String> stateBaseLine(String source) throws IOException, CsvValidationException {
         Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/states.csv"));
         CSVReader csvReader = new CSVReader(reader);
         LinkedHashMap<String, String> keys = new LinkedHashMap<>();
@@ -80,7 +116,12 @@ public class CSVParser {
         while ((nextRecord = csvReader.readNext()) != null) {
             String fips = nextRecord[1];
             String state = nextRecord[0];
-            String data = state + "," + fips + ",0,0";
+            String data;
+            if (source.equals("nytimes")) {
+                data = state + "," + fips + ",0,0";
+            } else {
+                data = state + "," + fips + ",0,0,0,0";
+            }
             if (!fips.equals("")) {
                 if (Integer.parseInt(fips) < 57) {
                     keys.put(fips, data);
@@ -102,7 +143,7 @@ public class CSVParser {
         }
     }
 
-    public void countyCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
+    public void nytimesCountyCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
         try {
             for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
                 String key = entry.getKey();
@@ -132,7 +173,7 @@ public class CSVParser {
         }
     }
 
-    public void stateCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
+    public void nytimesStateCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
         try {
             for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
                 String key = entry.getKey();
@@ -160,5 +201,47 @@ public class CSVParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void covidtrackingCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
+        try {
+            for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
+                String key = entry.getKey();
+                File csv = new File("src/main/resources/csv/download/covidtracking/state/" + key + ".csv");
+                FileWriter fw = new FileWriter(csv);
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write("state,fips,hospitalized,hospitalizedCumulative,hospitalizedCurrently,hospitalizedIncrease\n");
+                ArrayList<String> value = entry.getValue();
+                System.out.println(key);
+                System.out.println(value);
+                for (int i = 0; i < value.size(); i++) {
+                    String cur = value.get(i);
+                    String fips = cur.split(",")[1];
+                    baseline.put(fips, cur);
+                }
+                for (Map.Entry<String, String> fips : baseline.entrySet()) {
+                    String val = fips.getValue();
+                    bw.write(val+"\n");
+                }
+                bw.flush();
+                bw.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public LinkedHashMap<String, String> stateAbbreviations() throws IOException, CsvValidationException {
+        LinkedHashMap<String,String> stateKeys = new LinkedHashMap<>();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/abbrev-states.csv"));
+        CSVReader csvReader = new CSVReader(reader);
+        String[] nextRecord;
+        while ((nextRecord = csvReader.readNext()) != null) {
+            String abbreviation = nextRecord[0];
+            String state = nextRecord[1];
+            String fips = nextRecord[2];
+            stateKeys.put(abbreviation, state + "," + fips);
+        }
+        return stateKeys;
     }
 }

@@ -4,10 +4,6 @@ import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
 import org.springframework.stereotype.Component;
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 @Component
 public class CurlExecutor {
@@ -27,9 +23,6 @@ public class CurlExecutor {
 
         String text = byteSource.asCharSource(Charsets.UTF_8).read();
 
-//        Date today = Calendar.getInstance().getTime();
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        String fileName = dateFormat.format(today);
         File county = new File("src/main/resources/csv/master/" + fileName + ".csv");
         BufferedWriter writer = new BufferedWriter(new FileWriter(county));
 

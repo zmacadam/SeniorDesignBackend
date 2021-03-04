@@ -1,7 +1,5 @@
 package tcu.edu.covidtracker.backend.controller;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +10,6 @@ import tcu.edu.covidtracker.backend.model.State;
 import tcu.edu.covidtracker.backend.model.UnitedStates;
 import tcu.edu.covidtracker.backend.repository.StateRepository;
 import tcu.edu.covidtracker.backend.repository.USRepository;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/data")
