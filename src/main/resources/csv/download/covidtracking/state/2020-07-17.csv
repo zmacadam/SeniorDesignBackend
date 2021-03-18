@@ -1,4 +1,4 @@
-state,hospitalized,hospitalizedCumulative,hospitalizedCurrently,hospitalizedIncrease
+state,fips,hospitalized,hospitalizedCumulative,hospitalizedCurrently,hospitalizedIncrease
 Washington,53,4944,4944,536,115
 Illinois,17,0,0,1431,0
 California,06,0,0,8450,0

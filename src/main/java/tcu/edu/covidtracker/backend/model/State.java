@@ -2,27 +2,29 @@ package tcu.edu.covidtracker.backend.model;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Data
-@NoArgsConstructor
-@Document
 public class State {
     @Id
+    private String id;
     private String name;
-    private List<Statistics> stats = new ArrayList<>();
-    private List<County> counties = new ArrayList<>();
+    private ArrayList<Statistics> stats = new ArrayList<>();
+    private ArrayList<County> counties = new ArrayList<>();
+
+    public void addCounty(County county) {
+        this.counties.add(county);
+    }
 
     public void addStats(Statistics statistics) {
         this.stats.add(statistics);
     }
 
-    public void addCounty(County county) {
-        this.counties.add(county);
+    public State() {
+        id = new ObjectId().toString();
     }
+
 }

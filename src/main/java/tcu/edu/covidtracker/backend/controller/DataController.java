@@ -2,14 +2,13 @@ package tcu.edu.covidtracker.backend.controller;
 
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import tcu.edu.covidtracker.backend.model.County;
-import tcu.edu.covidtracker.backend.model.State;
-import tcu.edu.covidtracker.backend.model.UnitedStates;
-import tcu.edu.covidtracker.backend.repository.StateRepository;
-import tcu.edu.covidtracker.backend.repository.USRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import tcu.edu.covidtracker.backend.repository.MongoRepository;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/api/data")
@@ -17,54 +16,97 @@ import tcu.edu.covidtracker.backend.repository.USRepository;
 public class DataController {
 
     @Autowired
-    private StateRepository stateRepository;
+    private MongoRepository mongoRepository;
 
-    @Autowired
-    private USRepository usRepository;
-
-    @GetMapping("/us")
+    @GetMapping("/USByDate")
     @ApiOperation(value = "Get data for all of the United States", response = ResponseEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved United States data.")
     }
     )
-    public UnitedStates retrieveUS(@ApiParam(value = "Date of the data you would like to retrieve") String date ) {
-        return usRepository.findById(date).get();
+    public String USByDate(@ApiParam(value = "Date of the data you would like to retrieve") String date ) throws ParseException {
+        return mongoRepository.USByDate(date);
     }
 
-    @GetMapping("/state")
+    @GetMapping("/USByDateRange")
+    @ApiOperation(value = "Get data for all of the United States", response = ResponseEntity.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved United States data.")
+    }
+    )
+    public String USByDateRange(@ApiParam(value = "Start Date") String startDate,
+                                @ApiParam(value = "End Date") String endDate) throws ParseException {
+        return mongoRepository.USByDateRange(startDate, endDate);
+    }
+
+    @GetMapping("/AllStatesByDate")
     @ApiOperation(value = "Get All data for a certain state", response = ResponseEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved State data.")
     }
     )
-    public State retrieveState(@ApiParam(value = "Date of the data you would like to retrieve") String date,
-                                               @ApiParam(value = "The data type needed (e.g. which button clicked)") String data,
-                                               @ApiParam(value = "The id of the State") String id) {
-        return stateRepository.findById(id).get();
+    public String allStatesByDate(@ApiParam(value = "Date of the data you would like to retrieve") String date) {
+        return mongoRepository.allStatesByDate(date);
     }
 
-    @GetMapping("/statebydate")
+
+    @GetMapping("/OneStateByDate")
     @ApiOperation(value = "Get data for a certain state", response = ResponseEntity.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved State data.")
     }
     )
-    public State retrieveStateDataByDate(@ApiParam(value = "Date of the data you would like to retrieve") String date,
-                                         @ApiParam(value = "The id of the State") String id){
-        return stateRepository.findByDate(id, date).get();
+    public String oneStateByDate(@ApiParam(value = "Date of the data you would like to retrieve") String date,
+                                         @ApiParam(value = "The id of the State") String state){
+        return mongoRepository.oneStateByDate(date, state);
     }
 
-    @GetMapping("/county")
+
+    @GetMapping("/StateWithCountiesByDateRange")
+    @ApiOperation(value = "Get data for a state between certain dates", response = ResponseEntity.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrived county data.")
+    })
+    public String stateWithDateRange(@ApiParam(value = "Start date") String start,
+                                                    @ApiParam(value = "End date") String end,
+                                                    @ApiParam(value = "The id of the State") String state) {
+        return mongoRepository.stateWithByDateRange(start, end, state);
+    }
+
+    @GetMapping("/StateNoCountiesByDateRange")
+    @ApiOperation(value = "Get data for a state between certain dates", response = ResponseEntity.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrived county data.")
+    })
+    public String stateWithoutDateRange(@ApiParam(value = "Start date of the data you would like to retrieve") String start,
+                                         @ApiParam(value = "End date of the data you would like to retrieve") String end,
+                                         @ApiParam(value = "The id of the State") String state) {
+        return mongoRepository.stateWithoutByDateRange(start, end, state);
+    }
+
+    @GetMapping("/CountyByDate")
     @ApiOperation(value = "Get data for a certain county", response = ResponseEntity.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved county data.")
+            @ApiResponse(code = 200, message = "Successfully retrieved State data.")
     }
     )
-    public ResponseEntity<County> retrieveCounty(@ApiParam(value = "Date of the data you would like to retrieve") String date,
-                                                 @ApiParam(value = "The data type needed (e.g. which button clicked)") String data,
-                                                 @ApiParam(value = "The id of the County") String id) {
-        County county = new County();
-        return new ResponseEntity<>(county, HttpStatus.OK);
+    public String countyByDate(@ApiParam(value = "Date of the data you would like to retrieve") String date,
+                                 @ApiParam(value = "The id of the State") String state,
+                                  @ApiParam(value = "The name of the county") String county){
+        return mongoRepository.countyByDate(date, state, county);
     }
+
+    @GetMapping("/CountyByDateRange")
+    @ApiOperation(value = "Get data for a certain county", response = ResponseEntity.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved State data.")
+    }
+    )
+    public String countyByDateRange(@ApiParam(value = "Start date of the data you would like to retrieve") String startDate,
+                                  @ApiParam(value = "End date of the data you would like to retrieve") String endDate,
+                                  @ApiParam(value = "The id of the State") String state,
+                                  @ApiParam(value = "The name of the county") String county){
+        return mongoRepository.countyByDateRange(startDate, endDate, state, county);
+    }
+
 }
