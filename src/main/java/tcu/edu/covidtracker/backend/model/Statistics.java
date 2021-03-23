@@ -17,6 +17,9 @@ public class Statistics {
     private int hospitalizedInc;
     private int newCases;
     private int newDeaths;
+    private int totalVaccinations;
+    private int vaccinesDistributed;
+    private int peopleVaccinated;
 
     public Statistics initStatistics() {
         this.cases = 0;
@@ -27,6 +30,9 @@ public class Statistics {
         this.hospitalizedInc = 0;
         this.newCases = 0;
         this.newDeaths = 0;
+        this.totalVaccinations = 0;
+        this.vaccinesDistributed = 0;
+        this.peopleVaccinated = 0;
         return this;
     }
 }

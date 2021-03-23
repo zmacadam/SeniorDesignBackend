@@ -1,17 +1,42 @@
 package tcu.edu.covidtracker.backend.automation.utilities;
 
+import com.google.common.collect.Lists;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Test;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
+@Component
 public class CSVParser {
+
+    @Test
+    public void vaccinationState() {
+        try {
+            ArrayList<ArrayList<String>> csvLines = sortVaccinationCSV();
+            LinkedHashMap<String, String> baseline = stateBaseLine("vaccination");
+            LinkedHashMap<String, ArrayList> dates = new LinkedHashMap<>();
+            for (ArrayList<String> line : csvLines) {
+                String date = line.get(0);
+                String state = line.get(1);
+                if (state.equals("New York State")) {
+                    state = "New York";
+                }
+                String data = state + "," + line.get(2) + "," + line.get(3) + "," + line.get(4);
+                if (baseline.containsKey(state)) {
+                    createMap(dates, date, data);
+                }
+            }
+            System.out.println(baseline);
+            vaccinationStateCumulative(dates, baseline);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void nytimesState() {
@@ -119,8 +144,14 @@ public class CSVParser {
             String data;
             if (source.equals("nytimes")) {
                 data = state + "," + fips + ",0,0";
+            } else if (source.equals("vaccination")) {
+                data = state + ",0,0,0";
             } else {
                 data = state + "," + fips + ",0,0,0,0";
+            }
+            if (source.equals("vaccination")) {
+                keys.put(state, data);
+                continue;
             }
             if (!fips.equals("")) {
                 if (Integer.parseInt(fips) < 57) {
@@ -203,6 +234,31 @@ public class CSVParser {
         }
     }
 
+    public void vaccinationStateCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
+        try {
+            for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
+                String key = entry.getKey();
+                File csv = new File("src/main/resources/csv/download/vaccination/state/" + key + ".csv");
+                FileWriter fw = new FileWriter(csv);
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write("state,total_vaccinations,total_distributed,people_vaccinated\n");
+                ArrayList<String> value = entry.getValue();
+                for (int i = 0; i < value.size(); i++) {
+                    String cur = value.get(i);
+                    baseline.put(cur.split(",")[0], cur);
+                }
+                for (Map.Entry<String, String> fips : baseline.entrySet()) {
+                    String val = fips.getValue();
+                    bw.write(val+"\n");
+                }
+                bw.flush();
+                bw.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void covidtrackingCumulative(LinkedHashMap<String, ArrayList> dates, LinkedHashMap<String, String> baseline) {
         try {
             for (Map.Entry<String, ArrayList> entry : dates.entrySet()) {
@@ -243,5 +299,24 @@ public class CSVParser {
             stateKeys.put(abbreviation, state + "," + fips);
         }
         return stateKeys;
+    }
+
+    public ArrayList<ArrayList<String>> sortVaccinationCSV() {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/csv/master/vaccination-data.csv"));
+            CSVReader csvReader = new CSVReader(reader);
+            ArrayList<ArrayList<String>> csvLines = new ArrayList<>();
+            String[] nextRecord;
+            while ((nextRecord = csvReader.readNext()) != null) {
+                ArrayList<String> line = Lists.newArrayList(nextRecord);
+                csvLines.add(line);
+            }
+            Comparator<ArrayList<String>> comp = Comparator.comparing(o -> o.get(0));
+            Collections.sort(csvLines, comp);
+            return csvLines;
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
