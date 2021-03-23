@@ -36,12 +36,12 @@ public class MongoParser {
         for (int i = 1; i < size-1; i++) {
             LocalDate firstDay = LocalDate.now().minusDays(1 + i);
             LocalDate secondDay = firstDay.minusDays(1);
-            File covidTrackerFile = new File(covidTrackingState + "\\" + firstDay + ".csv");
+            File covidTrackerFile = new File(covidTrackingState + firstDay + ".csv");
             covidTrackingFlag = covidTrackerFile.exists();
-            File vaccinationFile = new File(vaccinationState + "\\" + firstDay + ".csv");
+            File vaccinationFile = new File(vaccinationState + firstDay + ".csv");
             vaccinationFlag = vaccinationFile.exists();
-            Reader reader1 = Files.newBufferedReader(Paths.get(nyTimesState + "\\" + firstDay + ".csv"));
-            Reader reader2 = Files.newBufferedReader(Paths.get(nyTimesState + "\\" + secondDay + ".csv"));
+            Reader reader1 = Files.newBufferedReader(Paths.get(nyTimesState + firstDay + ".csv"));
+            Reader reader2 = Files.newBufferedReader(Paths.get(nyTimesState  + secondDay + ".csv"));
             CSVReader todayStateCSVReader = new CSVReader(reader1);
             CSVReader todayStateCSVReader2 = null;
             CSVReader todayStateCSVReader3 = null;
@@ -64,12 +64,12 @@ public class MongoParser {
             StatesDate statesDate = new StatesDate();
             statesDate.setDate(firstDay.toString());
             if (covidTrackingFlag) {
-                Reader reader3 = Files.newBufferedReader(Paths.get(covidTrackingState + "\\" + firstDay + ".csv"));
+                Reader reader3 = Files.newBufferedReader(Paths.get(covidTrackingState + firstDay + ".csv"));
                 todayStateCSVReader2 = new CSVReader(reader3);
                 todayStateCSVReader2.readNext();
             }
             if (vaccinationFlag) {
-                Reader reader4 = Files.newBufferedReader(Paths.get(vaccinationState + "\\" + firstDay + ".csv"));
+                Reader reader4 = Files.newBufferedReader(Paths.get(vaccinationState + firstDay + ".csv"));
                 todayStateCSVReader3 = new CSVReader(reader4);
                 todayStateCSVReader3.readNext();
             }
@@ -79,8 +79,8 @@ public class MongoParser {
                 StateDate stateDate = new StateDate();
                 stateDate.setDate(firstDay.toString());
 
-                Reader todayCountyReader = Files.newBufferedReader(Paths.get(nyTimesCounty + "\\" + firstDay + ".csv"));
-                Reader yesterdayCountyReader = Files.newBufferedReader(Paths.get(nyTimesCounty + "\\" + secondDay + ".csv"));
+                Reader todayCountyReader = Files.newBufferedReader(Paths.get(nyTimesCounty + firstDay + ".csv"));
+                Reader yesterdayCountyReader = Files.newBufferedReader(Paths.get(nyTimesCounty + secondDay + ".csv"));
                 CSVReader todayCountyCSVReader = new CSVReader(todayCountyReader);
                 CSVReader yesterdayCountyCSVReader = new CSVReader(yesterdayCountyReader);
 
