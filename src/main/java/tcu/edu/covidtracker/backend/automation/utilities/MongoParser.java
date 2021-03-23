@@ -1,10 +1,7 @@
 package tcu.edu.covidtracker.backend.automation.utilities;
 
 import com.google.gson.Gson;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 import com.mongodb.util.JSON;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -24,7 +21,9 @@ public class MongoParser {
 
     @PostConstruct
     public void dailyState() throws IOException, CsvValidationException {
-        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoClientURI uri = new MongoClientURI(
+                "mongodb://root:4x7NOpp0OFnpl1qD@cluster0-shard-00-00.i4jnr.mongodb.net:27017,cluster0-shard-00-01.i4jnr.mongodb.net:27017,cluster0-shard-00-02.i4jnr.mongodb.net:27017/CovidTracker?ssl=true&replicaSet=atlas-11ucwv-shard-0&authSource=admin&retryWrites=true&w=majority");
+        MongoClient mongoClient = new MongoClient(uri);
         DB db = mongoClient.getDB("CovidTracker");
         String nyTimesState = "src/main/resources/csv/download/nytimes/state/";
         String nyTimesCounty = "src/main/resources/csv/download/nytimes/county/";
@@ -33,7 +32,7 @@ public class MongoParser {
         int size = new File(nyTimesState).list().length;
         boolean covidTrackingFlag;
         boolean vaccinationFlag;
-        for (int i = 1; i < size-1; i++) {
+        for (int i = 0; i < size-1; i++) {
             LocalDate firstDay = LocalDate.now().minusDays(1 + i);
             LocalDate secondDay = firstDay.minusDays(1);
             File covidTrackerFile = new File(covidTrackingState + firstDay + ".csv");
