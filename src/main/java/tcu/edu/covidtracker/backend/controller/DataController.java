@@ -4,8 +4,10 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tcu.edu.covidtracker.backend.automation.Scheduler;
 import tcu.edu.covidtracker.backend.repository.MongoRepository;
 
 import java.text.ParseException;
@@ -17,6 +19,23 @@ public class DataController {
 
     @Autowired
     private MongoRepository mongoRepository;
+
+    @Autowired
+    private Scheduler scheduler;
+
+    @PutMapping("/AddNewDay")
+    @ApiOperation(value = "Add the new day of data to the database")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Succesfully added new day of data.")
+    }
+    )
+    public void addNewDay() {
+        try {
+            scheduler.downloadFiles();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @GetMapping("/USByDate")
     @ApiOperation(value = "Get data for all of the United States", response = ResponseEntity.class)
