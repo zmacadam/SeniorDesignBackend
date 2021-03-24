@@ -24,7 +24,7 @@ public class Scheduler {
     @Autowired
     private MongoParser mongoParser;
 
-    @Scheduled(cron = "0 0 6 * * *", zone = "CST")
+    @Scheduled(cron = "0 0 2 * * *", zone = "CST")
     public void downloadFiles() throws IOException, CsvValidationException {
         cumulativeCountyTest();
         cumulativeStateTest();
@@ -49,16 +49,6 @@ public class Scheduler {
     public void vaccineTest() throws IOException {
         String url = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv";
         curlExecutor.executeCurl(url, "vaccination-data");
-    }
-
-    public void covidTrackingUS() throws IOException {
-        String url = "https://covidtracking.com/data/download/national-history.csv";
-        curlExecutor.executeCurl(url, "covidtracking-us");
-    }
-
-    public void covidTrackingState() throws IOException {
-        String url = "https://covidtracking.com/data/download/all-states-history.csv";
-        curlExecutor.executeCurl(url, "covidtracking-state");
     }
 
 }
