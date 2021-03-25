@@ -3,15 +3,13 @@ package tcu.edu.covidtracker.backend.controller;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tcu.edu.covidtracker.backend.automation.Scheduler;
 import tcu.edu.covidtracker.backend.repository.MongoRepository;
 
 import java.text.ParseException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/data")
 @Api(produces = "application/json", value = "Data needed to populate map of data pertaining to COVID-19")
