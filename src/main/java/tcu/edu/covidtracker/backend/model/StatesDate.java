@@ -13,7 +13,7 @@ public class StatesDate {
     private List<StateNoCounties> states = new ArrayList<>();
 
     public void addState(State state) {
-        StateNoCounties stateNoCounties = new StateNoCounties(state.getName(), state.getStats());
+        StateNoCounties stateNoCounties = new StateNoCounties(state.getName(), state.getStats(), state.getFips());
         this.states.add(stateNoCounties);
     }
 
