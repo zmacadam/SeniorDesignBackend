@@ -9,6 +9,7 @@ import java.util.ArrayList;
 @Data
 public class County {
     private String id;
+    private String fips;
     private String name;
     private ArrayList<Statistics> stats = new ArrayList<>();
 

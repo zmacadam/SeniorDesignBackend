@@ -23,15 +23,15 @@ public class CSVParser {
             for (ArrayList<String> line : csvLines) {
                 String date = line.get(0);
                 String state = line.get(1);
-                if (state.equals("New York State")) {
-                    state = "New York";
-                }
-                String data = state + "," + line.get(2) + "," + line.get(3) + "," + line.get(4);
                 if (baseline.containsKey(state)) {
+                    String fips = baseline.get(state).split(",")[1];
+                    if (state.equals("New York State")) {
+                        state = "New York";
+                    }
+                    String data = state + "," + fips + "," + line.get(2) + "," + line.get(3) + "," + line.get(4);
                     createMap(dates, date, data);
                 }
             }
-            System.out.println(baseline);
             vaccinationStateCumulative(dates, baseline);
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +145,7 @@ public class CSVParser {
             if (source.equals("nytimes")) {
                 data = state + "," + fips + ",0,0";
             } else if (source.equals("vaccination")) {
-                data = state + ",0,0,0";
+                data = state + "," + fips + ",0,0,0";
             } else {
                 data = state + "," + fips + ",0,0,0,0";
             }
@@ -241,7 +241,7 @@ public class CSVParser {
                 File csv = new File("src/main/resources/csv/download/vaccination/state/" + key + ".csv");
                 FileWriter fw = new FileWriter(csv);
                 BufferedWriter bw = new BufferedWriter(fw);
-                bw.write("state,total_vaccinations,total_distributed,people_vaccinated\n");
+                bw.write("state,fips,total_vaccinations,total_distributed,people_vaccinated\n");
                 ArrayList<String> value = entry.getValue();
                 for (int i = 0; i < value.size(); i++) {
                     String cur = value.get(i);

@@ -36,7 +36,7 @@ public class MongoParser {
         File vaccinationFile = new File(vaccinationState + firstDay + ".csv");
         vaccinationFlag = vaccinationFile.exists();
         Reader reader1 = Files.newBufferedReader(Paths.get(nyTimesState + firstDay + ".csv"));
-        Reader reader2 = Files.newBufferedReader(Paths.get(nyTimesState  + secondDay + ".csv"));
+        Reader reader2 = Files.newBufferedReader(Paths.get(nyTimesState + secondDay + ".csv"));
         CSVReader todayStateCSVReader = new CSVReader(reader1);
         CSVReader todayStateCSVReader2 = null;
         CSVReader todayStateCSVReader3 = null;
@@ -86,19 +86,21 @@ public class MongoParser {
             String yCases = yesterdayStateData[2];
             String yDeaths = yesterdayStateData[3];
 
-            todayStateData2 = new String[]{tState,"0","0","0","0","0"};
+            String stateFIPS = todayStateData[1];
+
+            todayStateData2 = new String[]{tState, stateFIPS, "0", "0", "0", "0"};
             if (covidTrackingFlag) {
                 todayStateData2 = todayStateCSVReader2.readNext();
             }
 
-            todayStateData3 = new String[]{tState,"0.0","0.0","0.0"};
+            todayStateData3 = new String[]{tState, stateFIPS, "0.0", "0.0", "0.0"};
             if (vaccinationFlag) {
                 todayStateData3 = todayStateCSVReader3.readNext();
             }
 
-            String vaccinations = todayStateData3[1].split("\\.")[0];
-            String distributed = todayStateData3[2].split("\\.")[0];
-            String vaccinated = todayStateData3[3].split("\\.")[0];
+            String vaccinations = todayStateData3[2].split("\\.")[0];
+            String distributed = todayStateData3[3].split("\\.")[0];
+            String vaccinated = todayStateData3[4].split("\\.")[0];
 
             vaccinations = vaccinations.equals("") ? "0" : vaccinations;
             distributed = distributed.equals("") ? "0" : distributed;
@@ -128,6 +130,7 @@ public class MongoParser {
 
             State state = new State();
             state.setName(tState);
+            state.setFips(stateFIPS);
 
             Statistics stats = new Statistics().initStatistics();
             stats.setCases(Integer.parseInt(tCases));
@@ -169,8 +172,11 @@ public class MongoParser {
                     int nCases2 = Integer.parseInt(tCases2) - Integer.parseInt(yCases2);
                     int nDeaths2 = Integer.parseInt(tDeaths2) - Integer.parseInt(yDeaths2);
 
+                    String countyFIPS = todayCountyNext[2];
+
                     County county = new County();
                     county.setName(tCounty);
+                    county.setFips(countyFIPS);
 
                     Statistics countyStats = new Statistics();
                     countyStats.setCases(Integer.parseInt(tCases2));

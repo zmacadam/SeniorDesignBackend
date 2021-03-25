@@ -1,7 +1,7 @@
 state,fips,cases,deaths
 Washington,53,358727,5232
 Illinois,17,1226595,23379
-California,06,3645538,57744
+California,06,3645558,57744
 Arizona,04,836737,16745
 Massachusetts,25,615874,16894
 Wisconsin,55,629994,7241
@@ -28,7 +28,7 @@ Oklahoma,40,435450,4788
 Pennsylvania,42,993622,24839
 South Carolina,45,542203,9027
 District of Columbia,11,43383,1050
-Kansas,20,303585,4850
+Kansas,20,302602,4850
 Missouri,29,579027,8824
 Vermont,50,17839,219
 Virginia,51,605969,10129

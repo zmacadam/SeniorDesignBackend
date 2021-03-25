@@ -26,7 +26,7 @@ public class DataController {
     @PutMapping("/AddNewDay")
     @ApiOperation(value = "Add the new day of data to the database")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Succesfully added new day of data.")
+            @ApiResponse(code = 200, message = "Successfully added new day of data.")
     }
     )
     public void addNewDay() {
