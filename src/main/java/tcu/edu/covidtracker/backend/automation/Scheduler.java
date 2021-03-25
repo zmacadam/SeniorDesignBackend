@@ -3,33 +3,28 @@ package tcu.edu.covidtracker.backend.automation;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import tcu.edu.covidtracker.backend.automation.utilities.CSVParser;
 import tcu.edu.covidtracker.backend.automation.utilities.MongoParser;
 
 import java.io.IOException;
 
-@Configuration
+@Component
 @EnableScheduling
 public class Scheduler {
 
-    @Autowired
-    private CSVParser csvParser;
-
-    @Autowired
-    private MongoParser mongoParser;
-
     @Scheduled(cron = "0 0 2 * * *", zone = "CST")
     public void downloadFiles() throws IOException, CsvValidationException {
+        CSVParser csvParser = new CSVParser();
         cumulativeCountyTest();
         cumulativeStateTest();
         vaccineTest();
         csvParser.nytimesCounty();
         csvParser.nytimesState();
         csvParser.vaccinationState();
+        MongoParser mongoParser = new MongoParser();
         mongoParser.dailyState();
     }
 

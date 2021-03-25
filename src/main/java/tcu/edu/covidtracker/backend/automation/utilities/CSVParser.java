@@ -3,7 +3,6 @@ package tcu.edu.covidtracker.backend.automation.utilities;
 import com.google.common.collect.Lists;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import org.junit.Test;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -14,7 +13,6 @@ import java.util.*;
 @Component
 public class CSVParser {
 
-    @Test
     public void vaccinationState() {
         try {
             ArrayList<ArrayList<String>> csvLines = sortVaccinationCSV();
@@ -38,7 +36,6 @@ public class CSVParser {
         }
     }
 
-    @Test
     public void nytimesState() {
         try {
             LinkedHashMap<String, String> baseline = stateBaseLine("nytimes");
@@ -58,7 +55,6 @@ public class CSVParser {
         }
     }
 
-    @Test
     public void nytimesCounty() {
         try {
             LinkedHashMap<String, String> baseline = countyBaseLine();
@@ -78,7 +74,6 @@ public class CSVParser {
         }
     }
 
-    @Test
     public void covidtrackingState() {
         try {
             LinkedHashMap<String, String> baseline = stateBaseLine("covidtracking");
