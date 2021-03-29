@@ -29,6 +29,7 @@ public class MongoParser {
         String vaccinationState = "src/main/resources/csv/download/vaccination/state/";
         boolean covidTrackingFlag;
         boolean vaccinationFlag;
+//        int size = new File(nyTimesState).list().length;
         LocalDate firstDay = LocalDate.now().minusDays(1);
         LocalDate secondDay = firstDay.minusDays(1);
         File covidTrackerFile = new File(covidTrackingState + firstDay + ".csv");

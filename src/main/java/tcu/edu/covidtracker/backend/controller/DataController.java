@@ -51,9 +51,9 @@ public class DataController {
             @ApiResponse(code = 200, message = "Successfully retrieved United States data.")
     }
     )
-    public String USByDateRange(@ApiParam(value = "Start Date") String startDate,
-                                @ApiParam(value = "End Date") String endDate) throws ParseException {
-        return mongoRepository.USByDateRange(startDate, endDate);
+    public String USByDateRange(@ApiParam(value = "Start Date") String start,
+                                @ApiParam(value = "End Date") String end) throws ParseException {
+        return mongoRepository.USByDateRange(start, end);
     }
 
     @GetMapping("/AllStatesByDate")
@@ -119,11 +119,11 @@ public class DataController {
             @ApiResponse(code = 200, message = "Successfully retrieved State data.")
     }
     )
-    public String countyByDateRange(@ApiParam(value = "Start date of the data you would like to retrieve") String startDate,
-                                  @ApiParam(value = "End date of the data you would like to retrieve") String endDate,
+    public String countyByDateRange(@ApiParam(value = "Start date of the data you would like to retrieve") String start,
+                                  @ApiParam(value = "End date of the data you would like to retrieve") String end,
                                   @ApiParam(value = "The id of the State") String state,
                                   @ApiParam(value = "The name of the county") String county){
-        return mongoRepository.countyByDateRange(startDate, endDate, state, county);
+        return mongoRepository.countyByDateRange(start, end, state, county);
     }
 
 }

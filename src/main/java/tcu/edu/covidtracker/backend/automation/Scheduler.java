@@ -4,7 +4,6 @@ package tcu.edu.covidtracker.backend.automation;
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Test;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import tcu.edu.covidtracker.backend.automation.utilities.CSVParser;
 import tcu.edu.covidtracker.backend.automation.utilities.MongoParser;
@@ -15,7 +14,7 @@ import java.io.IOException;
 @EnableScheduling
 public class Scheduler {
 
-    @Scheduled(cron = "0 0 2 * * *", zone = "CST")
+    @Test
     public void downloadFiles() throws IOException, CsvValidationException {
         CSVParser csvParser = new CSVParser();
         cumulativeCountyTest();
