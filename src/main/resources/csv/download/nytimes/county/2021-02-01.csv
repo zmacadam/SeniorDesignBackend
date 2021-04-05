@@ -11,9 +11,14 @@ Shannon,Missouri,29203,463,10
 Scott,Missouri,29201,3672,71
 Warren,Missouri,29219,2494,21
 Vernon,Missouri,29217,1330,32
+Campbell,Wyoming,56005,4629,53
 Sullivan,Missouri,29211,740,13
+Carbon,Wyoming,56007,1209,18
+Albany,Wyoming,56001,3789,11
 Texas,Missouri,29215,1502,21
 Taney,Missouri,29213,4420,68
+Big Horn,Wyoming,56003,978,28
+Converse,Wyoming,56009,906,14
 Franklin,Kansas,20059,2296,19
 Ford,Kansas,20057,5462,10
 Floyd,Iowa,19067,1435,38
@@ -703,27 +708,45 @@ Jackson,Kansas,20085,1264,11
 Hodgeman,Kansas,20083,181,4
 Haskell,Kansas,20081,401,1
 Graham,Arizona,04009,5126,65
+Crook,Wyoming,56011,414,10
 Coconino,Arizona,04005,15274,276
 Gila,Arizona,04007,6031,188
 Apache,Arizona,04001,9638,311
+Hot Springs,Wyoming,56017,356,3
 Cochise,Arizona,04003,10469,227
+Johnson,Wyoming,56019,613,9
+Fremont,Wyoming,56013,4482,77
+Goshen,Wyoming,56015,1120,20
 Adams,Idaho,16003,311,3
 Ada,Idaho,16001,44620,413
+Laramie,Wyoming,56021,8002,87
+Niobrara,Wyoming,56027,146,2
+Park,Wyoming,56029,2543,20
+Lincoln,Wyoming,56023,1139,11
+Natrona,Wyoming,56025,7538,117
 Bear Lake,Idaho,16007,328,2
 Bannock,Idaho,16005,7371,85
 Yukon-Koyukuk Census Area,Alaska,02290,268,4
 Benewah,Idaho,16009,534,7
+Platte,Wyoming,56031,562,11
+Sheridan,Wyoming,56033,2886,19
 Yuma,Arizona,04027,35184,697
+Teton,Wyoming,56039,3146,6
 Santa Cruz,Arizona,04023,7439,149
 Yavapai,Arizona,04025,16638,381
+Sublette,Wyoming,56035,654,7
 Pinal,Arizona,04021,42456,612
+Sweetwater,Wyoming,56037,3503,32
 Pima,Arizona,04019,101961,1740
+Uinta,Wyoming,56041,1968,12
+Washakie,Wyoming,56043,865,25
 Mohave,Arizona,04015,19641,521
 Navajo,Arizona,04017,14565,429
 Greenlee,Arizona,04011,525,6
 La Paz,Arizona,04012,2250,60
 Wayne,Tennessee,47181,2754,26
 Maricopa,Arizona,04013,475261,7462
+Weston,Wyoming,56045,609,4
 Wilson,Tennessee,47189,15266,182
 Williamson,Tennessee,47187,23070,172
 White,Tennessee,47185,3230,52
@@ -1064,21 +1087,41 @@ Kings,California,06031,20812,177
 Lake,California,06033,2826,32
 Benton,Indiana,18007,890,10
 Blackford,Indiana,18009,1151,23
+Ashland,Wisconsin,55003,1210,16
+Adams,Wisconsin,55001,1666,14
+Bayfield,Wisconsin,55007,1092,18
+Barron,Wisconsin,55005,5260,71
+Brown,Wisconsin,55009,31388,217
+Burnett,Wisconsin,55013,1230,23
+Buffalo,Wisconsin,55011,1298,7
+Chippewa,Wisconsin,55017,6982,82
+Calumet,Wisconsin,55015,5738,41
+Clark,Wisconsin,55019,3471,60
 Wilson,North Carolina,37195,7416,133
 Yadkin,North Carolina,37197,3322,39
 Yancey,North Carolina,37199,1335,22
+Columbia,Wisconsin,55021,5210,51
 Butte,California,06007,10215,138
 Wayne,North Carolina,37191,9310,186
 Calaveras,California,06009,1778,23
 Wilkes,North Carolina,37193,5399,91
+Dane,Wisconsin,55025,39531,272
 Alpine,California,06003,72,0
 Amador,California,06005,3211,33
+Crawford,Wisconsin,55023,1686,16
+Door,Wisconsin,55029,2544,23
 Alameda,California,06001,74108,982
+Dodge,Wisconsin,55027,11880,165
 Wake,North Carolina,37183,66925,427
 Warren,North Carolina,37185,1423,13
 Washington,North Carolina,37187,799,22
 Watauga,North Carolina,37189,3350,24
+Douglas,Wisconsin,55031,4123,32
 Vance,North Carolina,37181,3712,75
+Eau Claire,Wisconsin,55035,10881,108
+Dunn,Wisconsin,55033,4383,26
+Fond du Lac,Wisconsin,55039,12503,93
+Florence,Wisconsin,55037,458,12
 Webster,Louisiana,22119,3737,84
 Marshall,Indiana,18099,5187,84
 Madison,Indiana,18095,11337,247
@@ -1480,9 +1523,14 @@ Guernsey,Ohio,39059,2668,27
 Garvin,Oklahoma,40049,3253,31
 Fulton,Ohio,39051,3513,45
 Kanabec,Minnesota,27065,1022,18
+Racine,Wisconsin,55101,22331,327
 Jackson,Minnesota,27063,887,10
 Kittson,Minnesota,27069,385,21
+Rock,Wisconsin,55105,15229,157
 Kandiyohi,Minnesota,27067,5639,73
+Richland,Wisconsin,55103,1265,13
+St. Croix,Wisconsin,55109,7637,45
+Rusk,Wisconsin,55107,1268,16
 Orange,Indiana,18117,1665,37
 Itasca,Minnesota,27061,2916,44
 Owen,Indiana,18119,1744,40
@@ -1500,9 +1548,14 @@ Perry,Indiana,18123,1656,34
 Custer,Oklahoma,40039,3790,59
 Creek,Oklahoma,40037,5830,98
 Delaware,Ohio,39041,15116,82
+Sawyer,Wisconsin,55113,1448,17
 Lake of the Woods,Minnesota,27077,204,1
+Sauk,Wisconsin,55111,5319,42
 Lake,Minnesota,27075,675,16
+Sheboygan,Wisconsin,55117,13136,121
+Shawano,Wisconsin,55115,4987,80
 Le Sueur,Minnesota,27079,2191,16
+Taylor,Wisconsin,55119,1968,29
 Lac qui Parle,Minnesota,27073,665,16
 Posey,Indiana,18129,2469,28
 Koochiching,Minnesota,27071,612,11
@@ -1521,11 +1574,16 @@ Trinity,California,06105,261,5
 Tulare,California,06107,44440,588
 Faribault,Minnesota,27043,1126,16
 Sutter,California,06101,8355,89
+Vernon,Wisconsin,55123,1798,37
 Douglas,Minnesota,27041,3826,66
+Trempealeau,Wisconsin,55121,3367,38
 Tehama,California,06103,4256,47
 Freeborn,Minnesota,27047,2622,23
+Walworth,Wisconsin,55127,10855,132
 Fillmore,Minnesota,27045,1309,8
+Vilas,Wisconsin,55125,2074,34
 Defiance,Ohio,39039,3466,88
+Washburn,Wisconsin,55129,1304,20
 Champaign,Ohio,39021,2627,28
 Miami,Indiana,18103,3352,48
 Clark,Ohio,39023,11462,289
@@ -1537,10 +1595,15 @@ Martin,Indiana,18101,770,13
 Blaine,Oklahoma,40011,904,6
 Canadian,Oklahoma,40017,14349,66
 Caddo,Oklahoma,40015,3578,48
+Washington,Wisconsin,55131,14959,131
 Carter,Oklahoma,40019,5050,32
+Waupaca,Wisconsin,55135,5472,149
 Houston,Minnesota,27055,1457,14
+Waukesha,Wisconsin,55133,42997,485
 Hennepin,Minnesota,27053,95963,1530
+Winnebago,Wisconsin,55139,19066,188
 Isanti,Minnesota,27059,2914,44
+Waushara,Wisconsin,55137,2308,28
 Hubbard,Minnesota,27057,1544,38
 Columbiana,Ohio,39029,7618,125
 Montgomery,Indiana,18107,3600,57
@@ -1555,6 +1618,7 @@ Clearwater,Minnesota,27029,690,14
 Beaver,Oklahoma,40007,386,4
 Clay,Minnesota,27027,6667,84
 Atoka,Oklahoma,40005,1650,9
+Wood,Wisconsin,55141,6837,78
 Beckham,Oklahoma,40009,2485,31
 Cass,Minnesota,27021,2121,24
 Chisago,Minnesota,27025,4687,38
@@ -1715,28 +1779,59 @@ Hitchcock,Nebraska,31087,232,3
 Holt,Nebraska,31089,757,14
 Beltrami,Minnesota,27007,3211,48
 Becker,Minnesota,27005,2930,40
+Grant,Wisconsin,55043,5144,84
 Benton,Minnesota,27009,4294,88
+Forest,Wisconsin,55041,980,25
+Green Lake,Wisconsin,55047,1902,18
+Green,Wisconsin,55045,2837,19
 Anoka,Minnesota,27003,31818,372
+Iowa,Wisconsin,55049,1887,10
 Aitkin,Minnesota,27001,1130,33
 Carver,Minnesota,27019,7165,39
 Carlton,Minnesota,27017,2900,43
+Jackson,Wisconsin,55053,2587,22
+Iron,Wisconsin,55051,588,36
 Big Stone,Minnesota,27011,471,3
+Juneau,Wisconsin,55057,2966,18
+Jefferson,Wisconsin,55055,8437,77
 Brown,Minnesota,27015,2235,35
 Blue Earth,Minnesota,27013,5556,33
+Kenosha,Wisconsin,55059,16182,285
 Honolulu,Hawaii,15003,21155,327
 Hawaii,Hawaii,15001,2198,53
+Kewaunee,Wisconsin,55061,2509,27
+Lafayette,Wisconsin,55065,1521,8
+La Crosse,Wisconsin,55063,12370,73
+Lincoln,Wisconsin,55069,2994,72
+Langlade,Wisconsin,55067,2042,43
 Kauai,Hawaii,15007,181,1
 Kalawao,Hawaii,15005,1,0
 Maui,Hawaii,15009,2335,26
+Manitowoc,Wisconsin,55071,7999,75
+Marinette,Wisconsin,55075,4275,62
+Marathon,Wisconsin,55073,14620,201
+Milwaukee,Wisconsin,55079,103415,1164
+Menominee,Wisconsin,55078,785,11
+Marquette,Wisconsin,55077,1435,26
 Treutlen,Georgia,13283,752,19
 Towns,Georgia,13281,1002,43
 Turner,Georgia,13287,911,28
 Troup,Georgia,13285,6527,164
+Oconto,Wisconsin,55083,4575,54
+Monroe,Wisconsin,55081,4175,31
+Outagamie,Wisconsin,55087,20563,188
+Oneida,Wisconsin,55085,3334,61
+Ozaukee,Wisconsin,55089,8208,78
 Twiggs,Georgia,13289,575,27
 Upson,Georgia,13293,3021,100
 Union,Georgia,13291,1903,56
 Walton,Georgia,13297,8472,162
 Walker,Georgia,13295,5689,72
+Pierce,Wisconsin,55093,4145,38
+Pepin,Wisconsin,55091,796,7
+Portage,Wisconsin,55097,6637,62
+Polk,Wisconsin,55095,3662,43
+Price,Wisconsin,55099,1192,7
 Ware,Georgia,13299,4321,120
 Sumter,Georgia,13261,2239,85
 Taliaferro,Georgia,13265,106,0
@@ -2144,14 +2239,19 @@ Fulton,Arkansas,05049,1026,42
 Cascade,Montana,30013,7287,141
 Carter,Missouri,29035,409,8
 Faulkner,Arkansas,05045,10680,136
+Barbour,West Virginia,54001,1113,18
 Carroll,Missouri,29033,796,18
 Chouteau,Montana,30015,443,5
 Franklin,Arkansas,05047,1509,30
 Cedar,Missouri,29039,646,9
 Desha,Arkansas,05041,1218,17
+Boone,West Virginia,54005,1431,30
 Cass,Missouri,29037,6909,69
 Carter,Montana,30011,139,5
+Berkeley,West Virginia,54003,8972,83
 Drew,Arkansas,05043,1870,31
+Brooke,West Virginia,54009,1920,48
+Braxton,West Virginia,54007,749,1
 Cape Girardeau,Missouri,29031,8899,132
 Custer,Montana,30017,1122,14
 Daniels,Montana,30019,189,6
@@ -2165,18 +2265,23 @@ Saguache,Colorado,08109,292,4
 Routt,Colorado,08107,1630,19
 Lincoln,Arkansas,05079,3054,39
 Rio Grande,Colorado,08105,624,10
+Calhoun,West Virginia,54013,214,0
 Adair,Missouri,29001,2143,15
 Beaverhead,Montana,30001,852,8
+Cabell,West Virginia,54011,7119,146
 Rio Blanco,Colorado,08103,400,3
 Big Horn,Montana,30003,2256,69
 Pueblo,Colorado,08101,14353,356
 Lawrence,Arkansas,05075,1920,41
+Doddridge,West Virginia,54017,412,5
 Atchison,Missouri,29005,289,6
 Lee,Arkansas,05077,1597,33
+Clay,West Virginia,54015,355,4
 Andrew,Missouri,29003,1255,17
 Johnson,Arkansas,05071,2514,29
 Carbon,Montana,30009,779,11
 Lafayette,Arkansas,05073,455,7
+Fayette,West Virginia,54019,2398,66
 Coles,Illinois,17029,4900,88
 Blaine,Montana,30005,670,24
 Broadwater,Montana,30007,367,3
@@ -2186,22 +2291,32 @@ Cook,Illinois,17031,454485,9433
 Crawford,Illinois,17033,1895,37
 Boone,Missouri,29019,16648,70
 Bates,Missouri,29013,1037,16
+Grant,West Virginia,54023,1007,20
 Jackson,Arkansas,05067,3082,32
 Barton,Missouri,29011,920,9
 Jefferson,Arkansas,05069,8089,150
+Gilmer,West Virginia,54021,589,6
 Bollinger,Missouri,29017,1032,12
 Independence,Arkansas,05063,3464,113
+Hampshire,West Virginia,54027,1398,28
 Benton,Missouri,29015,1392,20
+Greenbrier,West Virginia,54025,2264,49
 Izard,Arkansas,05065,1558,36
 Howard,Arkansas,05061,1359,23
+Hancock,West Virginia,54029,2489,82
 De Witt,Illinois,17039,1208,29
 Alexander,Illinois,17003,416,8
 Bond,Illinois,17005,1809,27
 Adams,Illinois,17001,7733,136
 Chicot,Arkansas,05017,1556,38
+Hardy,West Virginia,54031,1221,16
 Clark,Arkansas,05019,1847,34
+Jackson,West Virginia,54035,1566,45
 Calhoun,Arkansas,05013,350,2
+Harrison,West Virginia,54033,4491,56
 Carroll,Arkansas,05015,2590,39
+Kanawha,West Virginia,54039,11130,263
+Jefferson,West Virginia,54037,3360,34
 Bradley,Arkansas,05011,1252,29
 Boone,Illinois,17007,5724,82
 Brown,Illinois,17009,641,12
@@ -2210,22 +2325,37 @@ Carroll,Illinois,17015,1504,33
 Bureau,Illinois,17011,3121,85
 Boone,Arkansas,05009,3346,74
 Baxter,Arkansas,05005,2646,95
+Lewis,West Virginia,54041,855,12
 Benton,Arkansas,05007,25180,350
+Logan,West Virginia,54045,2444,69
 Arkansas,Arkansas,05001,1777,36
 Ashley,Arkansas,05003,1648,27
+Lincoln,West Virginia,54043,1129,12
+Marion,West Virginia,54049,3371,25
+McDowell,West Virginia,54047,1259,13
 Cass,Illinois,17017,1834,31
 Champaign,Illinois,17019,16421,110
+Mason,West Virginia,54053,1648,31
 Dallas,Arkansas,05039,669,12
+Marshall,West Virginia,54051,2823,63
 Crittenden,Arkansas,05035,5377,84
+Mineral,West Virginia,54057,2503,75
+Mercer,West Virginia,54055,3924,91
 Cross,Arkansas,05037,1821,43
 Craighead,Arkansas,05031,12188,166
 Crawford,Arkansas,05033,6215,91
+Mingo,West Virginia,54059,1927,21
 Columbia,Arkansas,05027,1942,51
+Monroe,West Virginia,54063,885,11
+Monongalia,West Virginia,54061,7138,60
 Conway,Arkansas,05029,1989,28
 Cleburne,Arkansas,05023,1765,60
 Hamilton,Texas,48193,687,23
+Nicholas,West Virginia,54067,1059,11
 Cleveland,Arkansas,05025,802,23
+Morgan,West Virginia,54065,880,11
 Hall,Texas,48191,379,13
+Ohio,West Virginia,54069,3411,63
 Clay,Arkansas,05021,1573,42
 Hardin,Texas,48199,4390,79
 Hardeman,Texas,48197,339,12
@@ -2839,13 +2969,18 @@ Todd,Kentucky,21219,947,20
 Taylor,Kentucky,21217,2371,28
 Giles,Virginia,51071,941,7
 Wayne,Illinois,17191,1586,44
+Webster,West Virginia,54101,257,0
 Gloucester,Virginia,51073,1515,27
 Ray,Missouri,29177,1409,19
 Goochland,Virginia,51075,1043,8
 Randolph,Missouri,29175,1790,24
+Wirt,West Virginia,54105,328,2
 Grayson,Virginia,51077,1038,26
+Wetzel,West Virginia,54103,1013,19
 Greene,Virginia,51079,855,5
 Reynolds,Missouri,29179,461,4
+Wyoming,West Virginia,54109,1593,28
+Wood,West Virginia,54107,6543,110
 Ralls,Missouri,29173,739,10
 Putnam,Missouri,29171,219,2
 Hudspeth,Texas,48229,523,9
@@ -2891,9 +3026,14 @@ Montgomery,Pennsylvania,42091,48832,1389
 Dickey,North Dakota,38021,725,32
 Divide,North Dakota,38023,147,2
 Dunn,North Dakota,38025,363,7
+Pendleton,West Virginia,54071,575,4
 Clinton,Michigan,26037,4759,66
 Crawford,Michigan,26039,562,5
 Denali Borough,Alaska,02068,67,0
+Pocahontas,West Virginia,54075,556,9
+Pleasants,West Virginia,54073,772,15
+Putnam,West Virginia,54079,3843,68
+Preston,West Virginia,54077,2431,38
 Cheboygan,Michigan,26031,858,34
 Chippewa,Michigan,26033,4578,36
 Clare,Michigan,26035,1532,68
@@ -2904,10 +3044,15 @@ Bowman,North Dakota,38011,360,4
 Burke,North Dakota,38013,215,1
 Burleigh,North Dakota,38015,14272,185
 Genesee,Michigan,26049,24391,728
+Raleigh,West Virginia,54081,4199,44
+Ritchie,West Virginia,54085,567,8
+Randolph,West Virginia,54083,2214,9
 Liberty,Texas,48291,5881,132
 Delta,Michigan,26041,3072,82
+Summers,West Virginia,54089,675,21
 Dickinson,Michigan,26043,2332,69
 Bethel Census Area,Alaska,02050,3340,15
+Roane,West Virginia,54087,464,6
 Eaton,Michigan,26045,5871,135
 Emmet,Michigan,26047,1608,35
 Llano,Texas,48299,1270,35
@@ -2919,14 +3064,19 @@ Lipscomb,Texas,48295,274,11
 Limestone,Texas,48293,2309,49
 Adams,North Dakota,38001,259,2
 Barnes,North Dakota,38003,1277,31
+Tucker,West Virginia,54093,459,7
 Pulaski,Arkansas,05119,34046,510
 Barry,Michigan,26015,3550,40
+Taylor,West Virginia,54091,1020,17
 Bay,Michigan,26017,7126,264
+Upshur,West Virginia,54097,1497,23
 Pope,Arkansas,05115,7204,86
 Benzie,Michigan,26019,862,30
+Tyler,West Virginia,54095,576,4
 Prairie,Arkansas,05117,797,21
 Poinsett,Arkansas,05111,2939,72
 Lampasas,Texas,48281,1719,20
+Wayne,West Virginia,54099,2389,28
 Polk,Arkansas,05113,1664,56
 Arenac,Michigan,26011,703,23
 Baraga,Michigan,26013,748,32

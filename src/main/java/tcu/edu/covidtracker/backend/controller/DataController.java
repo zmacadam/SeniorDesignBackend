@@ -21,7 +21,7 @@ public class DataController {
     @Autowired
     private Scheduler scheduler;
 
-    @PutMapping("/AddNewDay")
+    @PutMapping("/UpToDate")
     @ApiOperation(value = "Add the new day of data to the database")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully added new day of data.")

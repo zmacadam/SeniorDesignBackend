@@ -120,7 +120,7 @@ public class CSVParser {
             String county = nextRecord[0];
             String data = county + "," + state + "," + fips + ",0,0";
             if (!fips.equals("")) {
-                if (Integer.parseInt(fips) < 54000) {
+                if (Integer.parseInt(fips) < 57000) {
                     keys.put(fips, data);
                 }
             }
@@ -182,7 +182,7 @@ public class CSVParser {
                     String cur = value.get(i);
                     String fips = cur.split(",")[2];
                     if (!fips.equals("")) {
-                        if (Integer.parseInt(fips) < 54000) {
+                        if (Integer.parseInt(fips) < 57000) {
                             baseline.put(fips, cur);
                         }
                     }
